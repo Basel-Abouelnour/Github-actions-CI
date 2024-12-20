@@ -1,0 +1,19 @@
+name: trivial-pipeline
+
+on: 
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: self-host
+
+    steps:
+
+      - name: shell commands
+        run: |
+          pwd
+          ls
+          whoami
+          free -h
