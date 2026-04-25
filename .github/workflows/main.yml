@@ -1,35 +1,29 @@
 name: CI/CD for To-Do App
- 
 on:
-
   push:
-
     branches:
-
       - main
  
 jobs:
-
   build-and-deploy:
-
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
  
     steps:
-
-      - name: Checkout repository
-
+      - name: Checkout repositor
         uses: actions/checkout@v3
  
       - name: Set up Docker
-
         uses: docker/setup-buildx-action@v2
  
       - name: Build and push Docker images
-
         run: |
-
           docker compose build
-
           docker compose up -d
+
+      - name: Testing output
+        run: |
+          docker ps 
+          curl localhost:3000
+          
 
  
